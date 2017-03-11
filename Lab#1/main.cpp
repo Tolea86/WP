@@ -62,6 +62,9 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         case WM_PAINT:
             hdc = BeginPaint (hwnd, &ps) ;
 
+            GetClientRect (hwnd, &rect) ;
+            DrawText (hdc, TEXT ("Done with Pride and Prejudice by Iuzvac Anatolie"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER) ;
+
             EndPaint (hwnd, &ps) ;
             return 0 ;
 
