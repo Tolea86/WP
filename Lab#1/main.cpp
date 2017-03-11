@@ -65,6 +65,9 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             GetClientRect (hwnd, &rect) ;
             DrawText (hdc, TEXT ("Done with Pride and Prejudice by Iuzvac Anatolie"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER) ;
 
+            button = CreateWindow("BUTTON", "THIS IS A BUTTON", WS_VISIBLE | WS_CHILD | WS_BORDER, 20, 50, 200, 20, hwnd, NULL, NULL, NULL );
+            button2 = CreateWindow("BUTTON", "THIS IS A BUTTON SECOND", WS_VISIBLE | WS_CHILD | WS_BORDER, 20, 100, 200, 20, hwnd, NULL, NULL, NULL );
+
             EndPaint (hwnd, &ps) ;
             return 0 ;
 
