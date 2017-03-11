@@ -50,6 +50,7 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine
 
 LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    HFONT tempFont;
     HWND button;
     HWND button2;
     HDC hdc ;
@@ -65,8 +66,14 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             GetClientRect (hwnd, &rect) ;
             DrawText (hdc, TEXT ("Done with Pride and Prejudice by Iuzvac Anatolie"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER) ;
 
-            button = CreateWindow("BUTTON", "THIS IS A BUTTON", WS_VISIBLE | WS_CHILD | WS_BORDER, 20, 50, 200, 20, hwnd, NULL, NULL, NULL );
-            button2 = CreateWindow("BUTTON", "THIS IS A BUTTON SECOND", WS_VISIBLE | WS_CHILD | WS_BORDER, 20, 100, 200, 20, hwnd, NULL, NULL, NULL );
+            button = CreateWindow("BUTTON", TEXT ("THIS IS A BUTTON"), WS_VISIBLE | WS_CHILD | WS_BORDER, 20, 50, 200, 20, hwnd, NULL, NULL, NULL );
+            button2 = CreateWindow("BUTTON", TEXT ("THIS IS A BUTTON 2"), WS_VISIBLE | WS_CHILD | WS_BORDER, 20, 100, 300, 30, hwnd, NULL, NULL, NULL );
+
+            //HFONT hFont = (HFONT)GetStockObject(OEM_FIXED_FONT);
+            tempFont = CreateFont(10, 5, 15, 15, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+            SendMessage(button2, WM_SETFONT, (WPARAM)tempFont, MAKELPARAM(TRUE, 0));
+
 
             EndPaint (hwnd, &ps) ;
             return 0 ;
